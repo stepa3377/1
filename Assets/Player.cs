@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class Player : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private CharacterController _characterController;
+    [SerializeField] private Animation _animator;
+    //private static readonly int IsRunning = Animation.StringToHash("IsRunning");
 
     void Update()
     {
@@ -32,8 +35,14 @@ public class Player : MonoBehaviour
         inputs.x = Input.GetAxis("Horizontal");
         inputs.z = Input.GetAxis("Vertical");
 
+        SetRunAnimationActive(inputs != Vector3.zero);
         _characterController.Move(inputs * (_speed * Time.deltaTime));
         _characterController.Move(Vector3.down * (_gravity * Time.deltaTime));
+    }
+
+    private void SetRunAnimationActive(bool isActive)
+    {
+      //  _animator.SetBool(IsRunning, isActive);
     }
 
     private void Jump()
