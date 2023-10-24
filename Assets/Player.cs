@@ -12,8 +12,8 @@ public class Player : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private CharacterController _characterController;
-    [SerializeField] private Animation _animator;
-    //private static readonly int IsRunning = Animation.StringToHash("IsRunning");
+    [SerializeField] private Animator _animator;
+    private static readonly int IsRunning = Animator.StringToHash("IsRunning");
 
     void Update()
     {
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
 
     private void SetRunAnimationActive(bool isActive)
     {
-      //  _animator.SetBool(IsRunning, isActive);
+        _animator.SetBool(IsRunning, isActive);
     }
 
     private void Jump()
